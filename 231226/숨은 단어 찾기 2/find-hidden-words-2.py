@@ -1,4 +1,4 @@
-r,c = map(int,input().split())
+r, c = map(int, input().split())
 arr = [
     list(input())
     for _ in range(r)
@@ -15,20 +15,21 @@ for x in range(r):
         if arr[x][y] != 'L':
             continue
         
-        for dx, dy in zip(dxs, dys):
-            curx,cury = x,y
+        for i in range(8):
+            dx, dy = dxs[i], dys[i]
+            curx, cury = x, y
             val = 0
 
             while True:
                 nx = curx + dx
                 ny = cury + dy
-                if in_range(nx,ny) == False:
+                if not in_range(nx, ny):
                     break
                 if arr[nx][ny] != 'E':
                     break
 
                 val += 1
-                curx ,cury = nx,ny
+                curx, cury = nx, ny
             
             if val >= 2:
                 cnt += 1
