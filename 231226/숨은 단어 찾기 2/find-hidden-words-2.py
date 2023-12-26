@@ -4,36 +4,32 @@ arr = [
     for _ in range(r)
 ]
 
+def in_range(x, y):
+    return 0 <= x < r and 0 <= y < c
+
+dxs, dys = [1, 1, 1, -1, -1, -1, 0, 0], [-1, 0, 1, -1, 0, 1, -1, 1]
+
 cnt = 0
+for x in range(r):
+    for y in range(c):
+        if arr[x][y] != 'L':
+            continue
+        
+        for dx, dy in zip(dxs, dys):
+            curx,cury = x,y
+            val = 0
 
-# 가로
-for i in range(r):
-    for j in range(c):
-        if arr[i][j] == 'L':
-            if (j >= 2) and (arr[i][j-2] == 'E' and arr[i][j-1] == 'E'):
-                cnt += 1
-            if (j <= c-3) and (arr[i][j+1] == 'E' and arr[i][j+2] == 'E'):
-                cnt += 1
+            while True:
+                nx = curx + dx
+                ny = cury + dy
+                if in_range(nx,ny) == False:
+                    break
+                if arr[nx][ny] != 'E':
+                    break
 
-# 세로
-for i in range(r):
-    for j in range(c):
-        if arr[i][j] == 'L':
-            if (i >= 2) and (arr[i-2][j] == 'E' and arr[i-1][j] == 'E'):
-                cnt += 1
-            if (i <= r-3) and (arr[i+1][j] == 'E' and arr[i+2][j] == 'E'):
-                cnt += 1
-
-# 대각
-for i in range(r):
-    for j in range(c):
-        if arr[i][j] == 'L':
-            if (i >= 2) and (j >= 2) and (arr[i-1][j-1] == 'E' and arr[i-2][j-2] == 'E'):
-                cnt += 1
-            if (i >= 2) and (j <= c-3) and (arr[i-1][j+1] == 'E' and arr[i-2][j+2] == 'E'):
-                cnt += 1
-            if (i <= r-3) and (j >= 2) and (arr[i+1][j-1] == 'E' and arr[i+2][j-2] == 'E'):
-                cnt += 1
-            if (i <= r-3) and (j <= c-3) and (arr[i+1][j+1] == 'E' and arr[i+2][j+2] == 'E'):
+                val += 1
+                curx ,cury = nx,ny
+            
+            if val >= 2:
                 cnt += 1
 print(cnt)
