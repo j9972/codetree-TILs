@@ -6,14 +6,10 @@ min_idx = 10001
 
 for i in range(n):
     idx, string = input().split()
-    val = 0
-    if string == 'G':
-        val = 1
-    else:
-        val = 2
+    d[int(idx)] = 1 if string == 'G' else 2
     max_idx = max(max_idx,int(idx))
     min_idx = min(min_idx,int(idx))
-    d[int(idx)] = val
+    
 
 max_value = 0
 for i in range(min_idx,max_idx+k):
