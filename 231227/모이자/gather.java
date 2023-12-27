@@ -1,24 +1,31 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static int n = 5;
-    public static int[] arr = new int[]{1, 2, 3, 2, 6};
+    public static int N;
+    public static int[] arr;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
-        int max=Integer.MIN_VALUE;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
 
-        for(int i=0; i<n; i++){
-            int sum=0;
-            arr[i]*=2;
-
-            for(int j=0; j<n-1; j++){
-                sum += Math.abs(arr[j]-arr[j+1]);
-            }
-
-            max=Math.max(sum,max);
-            arr[i]/=2;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        arr = new int[N];
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        System.out.println(max);
+
+        for (int i = 0; i < N; i++) {
+            int sum = 0;
+
+            for (int j = 0; j < N; j++) {
+                if (i == j) continue;
+                sum += Math.abs(j - i) * arr[j];
+            }
+            min = Math.min(sum, min);
+        }
+        System.out.println(min);
     }
 }
