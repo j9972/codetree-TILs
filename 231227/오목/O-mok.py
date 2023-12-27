@@ -53,5 +53,8 @@ for x in range(19):
     if not flag:
         break
 
-print(ans)
-print(xx,yy)
+if ans != 0:
+    print(ans)
+    print(xx,yy)
+else:
+    print(0)
