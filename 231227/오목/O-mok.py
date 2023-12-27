@@ -11,7 +11,7 @@ def in_range(x, y):
 
 ans = 0
 flag = True
-xx,yy=00,00
+curx, cury= 0,0
 
 for x in range(19):
     for y in range(19):
@@ -41,10 +41,8 @@ for x in range(19):
             
             if cnt == 5:
                 ans = val 
-                # print(curx, x)
-                # print(cury, y)
-                xx = (curx + x) // 2 + 1
-                yy = (cury + y) // 2 + 1
+                # xx = (curx + x) // 2 + 1
+                # yy = (cury + y) // 2 + 1
                 flag = False
                 break
         
@@ -55,6 +53,6 @@ for x in range(19):
 
 if ans != 0:
     print(ans)
-    print(xx,yy)
+    print((curx + x) // 2 + 1, (cury + y) // 2 + 1)
 else:
     print(0)
