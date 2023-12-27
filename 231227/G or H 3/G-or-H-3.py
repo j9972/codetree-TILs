@@ -15,14 +15,14 @@ for i in range(n):
     min_idx = min(min_idx,int(idx))
     d[int(idx)] = val
 
-# for i in range(min_idx,max_idx+k):
-#     print(d[i], end= ' ')
-
 max_value = 0
 for i in range(min_idx,max_idx+k):
     sum_value = 0
     for j in range(k+1):
-        sum_value += d[i+j]
+        if i+j <= 10000:
+            sum_value += d[i+j]
+        else:
+            break
     max_value = max(max_value,sum_value)
 
 print(max_value)
