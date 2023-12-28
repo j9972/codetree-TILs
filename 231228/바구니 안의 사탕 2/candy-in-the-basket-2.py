@@ -3,7 +3,7 @@ n,k = map(int,input().split())
 d = [0] * 101
 for i in range(n):
     cnt,idx = map(int,input().split())
-    d[idx] = cnt
+    d[idx] += cnt
 
 max_cnt = 0
 for c in range(k,101-k):
