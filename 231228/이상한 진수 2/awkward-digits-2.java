@@ -9,6 +9,15 @@ public class Main {
         String strArr[]= s.split("");
 
         for(int i=0; i<strArr.length; i++){
+            if(s.length()==1){
+                if(strArr[i].equals("1")){
+                    strArr[i]="0";
+                    break;
+                }else{
+                    strArr[i]="1";
+                    break;
+                }
+            }
             if(!strArr[i].equals("1")){
                 strArr[i]="1";
                 break;
