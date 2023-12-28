@@ -6,10 +6,11 @@ for i in range(n):
     d[idx] += cnt
 
 max_cnt = 0
-for c in range(k,101-k):
+for c in range(k,101):
     sum_cnt = 0
     for i in range(c-k,c+k+1):
-        sum_cnt += d[i]
+        if 0 <= i <= 100:
+            sum_cnt += d[i]
     
     max_cnt = max(max_cnt, sum_cnt)
 print(max_cnt)
