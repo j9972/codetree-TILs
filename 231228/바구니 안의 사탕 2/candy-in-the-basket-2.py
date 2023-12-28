@@ -6,7 +6,7 @@ for i in range(n):
     d[idx] += cnt
 
 max_cnt = 0
-for c in range(k,101):
+for c in range(100):
     sum_cnt = 0
     for i in range(c-k,c+k+1):
         if 0 <= i <= 100:
