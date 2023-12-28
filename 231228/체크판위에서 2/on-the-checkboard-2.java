@@ -9,7 +9,7 @@ public class Main {
 
         int R = Integer.parseInt(st.nextToken());
         int C = Integer.parseInt(st.nextToken());
-        char map[][] = new char[R][C];
+        char map[][] = new char[15][15];
         int cnt=0;
 
         for(int i=0; i<R; i++){
