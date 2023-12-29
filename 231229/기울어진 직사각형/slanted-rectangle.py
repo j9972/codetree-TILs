@@ -4,23 +4,21 @@ arr = [
     for _ in range(n)
 ]
 
-max_value = 0
-
 def in_range(x,y):
     return 0<=x<n and 0<=y<n
 
-
+ans = 0
 
 def getScore(x,y,i,j):
+    dxs,dys = [-1,-1,1,1],[1,-1,-1,1]
     move = [i,j,i,j]
-    # 반시계 방향으로 4개의 대각선 방향
-    dxs = [-1,-1,1,1]
-    dys = [1,-1,-1,1]
+
     sum_val = 0
 
-    for dx,dy,mv in zip(dxs,dys,move):
+    for dx, dy, mv in zip(dxs,dys,move):
         for _ in range(mv):
-            x ,y = x + dx, y + dy
+            x = dx + x
+            y = dy + y
 
             if not in_range(x,y):
                 return 0
@@ -33,5 +31,5 @@ for x in range(n):
     for y in range(n):
         for i in range(1,n):
             for j in range(1,n):
-                max_value = max(max_value, getScore(x,y,i,j))
-print(max_value)
+                ans = max(ans, getScore(x,y,i,j))
+print(ans)
