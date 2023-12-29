@@ -7,23 +7,14 @@ arr = [
 ans = 0
 
 def happy(new):
-    cnt = 1
-    
-    for i in range(n-m+1): # 2번
-        f = False
-        for j in range(i,i+m-1): # 0
-            
-            if new[j] != new[j+1]:  
-                f = True  
-                break
-                
-            cnt += 1
-        
-        if cnt == m:
-            return True
-        if f:
-            break
-    return False
+    seq,cnt = 1,1
+    for i in range(1,n):
+        if new[i-1] == new[i]:
+            seq += 1
+        else:
+            seq = 1
+        cnt = max(cnt, seq)
+    return cnt >= m
 
 # 가로
 for i in range(n):
