@@ -29,7 +29,6 @@ def happy(new):
 for i in range(n):
     new = arr[i][:]
     if happy(new):
-        print(new)
         ans += 1
 
 # 세로
