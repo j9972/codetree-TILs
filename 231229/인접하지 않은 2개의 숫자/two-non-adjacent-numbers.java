@@ -19,7 +19,7 @@ public class Main {
         }
 
         for (int i = 0; i < N; i++) {
-            for (int j = i+2; i < N; i++) {
+            for (int j = i+2; j < N; j++) {
                 if(Math.abs(i-j)>=2) {
                     int sum = arr[i] + arr[j];
                     max = Math.max(sum, max);
