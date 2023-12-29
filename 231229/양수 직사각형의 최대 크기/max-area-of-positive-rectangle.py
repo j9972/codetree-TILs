@@ -4,31 +4,40 @@ arr = [
     for _ in range(n)
 ]
 
-def count(i, j, h, g):
-    c = 0
-    for k in range(i, h + 1):
-        for l in range(j, g + 1):
-            c += 1
-    return c
-
-def check_all_positive(i, j, h, g):
-    for k in range(i, h + 1):
-        for l in range(j, g + 1):
-            if arr[k][l] <= 0:
+def nega(a,b,c,d):
+    for i in range(a,b+1):
+        for j in range(c,d+1):
+            if arr[i][j] <= 0:
                 return False
     return True
 
-result = -1001
-
+# 가능한 모든 rect 구하기
+rect_list = list()
 for i in range(n):
-    for j in range(m):
-        for i_ in range(n):
-            for j_ in range(m):
-                if check_all_positive(i, j, i_, j_):
-                    result = max(
-                        result, count(i, j, i_, j_)
-                    )
-if result == -1001:
+    for j in range(i,n):
+        for k in range(m):
+            for h in range(k,m):
+                if nega(i,j,k,h):
+                    rect = [[0] * m for _ in range(n)]
+                    for r in range(i,j+1):
+                        for c in range(k,h+1):
+                            rect[r][c] = 1
+                    rect_list.append(rect)
+
+# 직사각형 합 구하기
+def total(rect):
+    cnt = 0
+    for i in range(n):
+        for j in range(m):
+            if rect[i][j]:
+                cnt += 1
+    return cnt
+
+ans = -1001
+for i in rect_list:
+    ans = max(ans, total(i))
+
+if ans == -1001:
     print(-1)
 else:
-    print(result)
+    print(ans)
