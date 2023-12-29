@@ -9,8 +9,8 @@ for _ in range(n):
 cnt = sys.maxsize
 
 for i in range(n):
-    minx,miny = 40001,40001
-    maxx,maxy = 0,0
+    minx,miny = sys.maxsize,sys.maxsize
+    maxx,maxy = 1,1
     for j in range(n):
         if i == j:
             continue
@@ -20,5 +20,5 @@ for i in range(n):
         maxx = max(maxx,x)
         maxy = max(maxy,y)
 
-cnt = min(cnt, (maxx - minx) * (maxy - miny))
+    cnt = min(cnt, (maxx - minx) * (maxy - miny))
 print(cnt)
