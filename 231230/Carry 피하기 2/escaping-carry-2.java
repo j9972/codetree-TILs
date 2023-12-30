@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
     public static int N;
     public static int arr[];
-    public static int max = Integer.MIN_VALUE;
+    public static int max = -1;
 
     public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
