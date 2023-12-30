@@ -38,7 +38,7 @@ public class Main {
             }
         }
 
-        if (cnt == 0) {
+        if (cnt<5) {
             System.out.println(0);
         }
 
