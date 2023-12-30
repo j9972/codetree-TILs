@@ -2,9 +2,9 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    public static int N;
     public static int map[][];
     public static int cnt = 0;
+    public static boolean chk = false;
     public static boolean visited[][];
     public static int result[][];
     public static int[] dx = new int[]{1, 1, 1, -1, -1, -1, 0, 0};
@@ -24,33 +24,35 @@ public class Main {
         }
 
         int black = 1, white = 2;
+
         for (int i = 1; i <= 19; i++) {
             for (int j = 1; j <= 19; j++) {
                 if (map[i][j] == black && !visited[i][j]) {
                     cnt = 0;
                     result = new int[10][2];
-                    dfs(i, j, black,0);
+                    dfs(i, j, black, 0);
                 } else if (map[i][j] == white && !visited[i][j]) {
                     cnt = 0;
                     result = new int[10][2];
-                    dfs(i, j, white,0);
+                    dfs(i, j, white, 0);
                 }
             }
         }
 
-        if (cnt<5) {
+        if (!chk) {
             System.out.println(0);
         }
 
     }
 
-    public static void dfs(int x, int y, int color,int idx) {
+    public static void dfs(int x, int y, int color, int idx) {
         visited[x][y] = true;
         result[idx][0] = x;
         result[idx][1] = y;
         cnt++;
 
-        if (cnt == 5 ) {
+        if (cnt == 5) {
+            chk = true;
             System.out.println(color);
             System.out.printf("%d %d", result[2][0], result[2][1]);
             return;
@@ -61,7 +63,7 @@ public class Main {
 
             if (cx >= 1 && cy >= 1 && cx < 20 && cy < 20) {
                 if (!visited[cx][cy] && map[cx][cy] == color) {
-                    dfs(cx, cy, color,idx+1);
+                    dfs(cx, cy, color, idx + 1);
                 }
             }
         }
