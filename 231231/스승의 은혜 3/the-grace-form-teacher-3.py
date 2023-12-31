@@ -16,7 +16,7 @@ for i in range(n):
 
     element = tmp[i]
     tmp[i] = (element[0]//2, element[1])
-    tmp.sort(key = lambda x: (x[0], x[1]))
+    tmp.sort(key = lambda x: (x[0] + x[1]))
         
     for i in tmp:
         p,d = i
