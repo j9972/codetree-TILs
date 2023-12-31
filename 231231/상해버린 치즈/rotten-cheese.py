@@ -14,25 +14,26 @@ sick = [
 
 sick.sort(key=lambda x : x[1])
 
-bad_cheese = [0] * (d+1)
+cheese = [0] * (m+1)
 
-time_idx = 1
-for i in range(100):
-    for sick_person, sick_time in sick: # sick_time == 3 or 8
-        for j in range(time_idx,sick_time):
-            for person, cheese, eat_time in eat_ppl:
-                if sick_time >= eat_time >= time_idx and sick_person == person:
-                    bad_cheese[cheese] += 1
-        time_idx = sick_time
-#print(bad_cheese)
+for i in range(d):
+    p,badCheese,t = eat_ppl[i]
 
-box = []
-for i in range(len(bad_cheese)):
-    if bad_cheese[i] == max(bad_cheese):
-        box.append(i)
+    for j in sick:
+        sickPerson, fromWhen = j
 
-res = set()
-for person, cheese, eat_time in eat_ppl: 
-    if cheese in box:
-        res.add(person)
-print(len(res))
+        if t < fromWhen and p == sickPerson:
+            cheese[badCheese] += 1
+            
+possible = list()
+for i, v in enumerate(cheese):
+    if v == max(cheese):
+        possible.append(i)
+
+ans = set()
+for i in eat_ppl:
+    person, bad, _ = i
+    if bad in possible:
+        ans.add(person)
+        
+print(len(ans))
