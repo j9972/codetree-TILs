@@ -7,12 +7,9 @@ arr = [
 max_val = 0
 for i in range(n): # 해고되는 개발자
     d = [0] * (1001)
-    sum_val = 0
-    for j in range(n):
+    for j, (x,y) in enumerate(arr):
         if i == j:
             continue
-
-        x,y = arr[j]
 
         for time in range(x,y):
             d[time] = 1
