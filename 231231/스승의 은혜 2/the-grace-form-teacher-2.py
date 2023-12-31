@@ -8,16 +8,18 @@ ans = 0
 
 for i in range(n):
     t = price[:]
+    bb=b
 
     t[i] //= 2
     t.sort()
     
     sum_val = 0
     for i in t:
-        if b < i:
+        if bb < i:
             break
-        sum_val += 1
-        b -= i
 
+        sum_val += 1
+        bb -= i
+        
     ans = max(ans, sum_val)
 print(ans)
