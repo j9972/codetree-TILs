@@ -5,7 +5,7 @@ num_of_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 left_days = 0
 for i in range(m1,m2):
-    left_days += num_of_days[m2] 
+    left_days += num_of_days[i] 
 
 left_days -= d1
 left_days += d2
