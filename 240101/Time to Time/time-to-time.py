@@ -1,16 +1,18 @@
 h1,m1,h2,m2 = map(int,input().split())
 
-elapsed_time = 0
+# elapsed_time = 0
 
-while True:
-    if h1 == h2 and m1 == m2:
-        break
+# while True:
+#     if h1 == h2 and m1 == m2:
+#         break
 
-    elapsed_time += 1
-    m1 += 1
+#     elapsed_time += 1
+#     m1 += 1
 
-    if m1 == 60:
-        h1 += 1
-        m1 = 0
+#     if m1 == 60:
+#         h1 += 1
+#         m1 = 0
 
-print(elapsed_time)
+# print(elapsed_time)
+
+print((h2 * 60 + m2) - (h1 * 60 + m1))
