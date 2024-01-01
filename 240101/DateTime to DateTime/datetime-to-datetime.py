@@ -1,12 +1,9 @@
 d,h,m = map(int,input().split())
 
-if d == 11 and (h < 11 or (h >= 11 and m < 11)):
+diff = (a * 24 * 60 + b * 60 + c) - (11 * 24 * 60 + 11 * 60 + 11)
+
+# 출력
+if diff < 0:
     print(-1)
 else:
-    time = 1440 - (671)
-
-    if d == 11:
-        print(time) 
-    else:
-        time += (d-12)*24*60+(h*60+m)
-        print(time)
+    print(diff)
