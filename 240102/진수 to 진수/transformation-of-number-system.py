@@ -4,10 +4,8 @@ n = list(input())
 # a -> 10 -> b
 
 num = 0
-
-for i in range(len(n)):
-    if int(n[i]) != 0:
-        num += int(n[i]) * (a**i)
+for ch in n:
+    num = num * a + (ord(ch) - ord('0'))
 
 digits = []
 
