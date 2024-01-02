@@ -12,4 +12,4 @@ for i in range(n):
         cnt = 1
     ans = max(ans, cnt)
 
-print(max_val)
+print(ans)
