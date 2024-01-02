@@ -9,22 +9,15 @@ for i in range(len(n)):
     if int(n[i]) != 0:
         num += int(n[i]) * (a**i)
 
+digits = []
 
-def turnB(val):
-    digits = []
+while True:
+    if num < b:
+        digits.append(num)
+        break
 
-    while True:
-        if val < b:
-            digits.append(val)
-            break
-    
-        digits.append(val % b)
-        val //= b
-    
-    result = ''
-    for d in digits[::-1]:
-        result += str(d)
+    digits.append(num % b)
+    num //= b
 
-    return result
-
-print(turnB(num))
+for d in digits[::-1]:
+    print(d,end="")
