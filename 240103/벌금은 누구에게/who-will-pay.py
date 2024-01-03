@@ -7,8 +7,10 @@ arr = [
 
 d = [0] * (n+1)
 
+ans = -1
 for i in arr:
     d[i] += 1
     if d[i] >= k:
-        print(i)
+        ans = i
         break
+print(ans)
