@@ -5,8 +5,6 @@ seat = list(input())
 gap = sys.maxsize
 res = []
 
-print(n, len(seat))
-
 for i in range(n):
     if seat[i] == '0':
         # print(i)
