@@ -17,7 +17,7 @@ for i in range(n):
                 break
 
 # 독서실 거리두기3과 다른 점은 양 끝이 1이 아니라 0일 수 있다는 점이다
-max_dist2 = 0
+max_dist2 = -1
 idx = -1
 if seat[0] == '0':
     dist = 0
@@ -50,4 +50,5 @@ for i in range(n):
         for j in range(i+1,n):
             if seat[j] == '1':
                 gap = min(gap, j-i)
+                break
 print(gap)
