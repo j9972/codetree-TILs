@@ -39,7 +39,7 @@ if seat[n-1] == '0':
         max_dist2 = dist
         idx = n-1
 
-if max_dist // 2 >= max_dist2: 
+if max_dist // 2 > max_dist2: 
     seat[(mx+my)//2] = '1'
 else:
     seat[idx] = '1'
