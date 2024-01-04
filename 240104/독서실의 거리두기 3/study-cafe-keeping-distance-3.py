@@ -2,27 +2,27 @@ import sys
 
 n = int(input())
 seat = list(input())
-gap = sys.maxsize
-res = []
+
+max_dist = 0
+maxX, maxY = -1,-1
 
 for i in range(n):
-    if seat[i] == '0':
-        # print(i)
-        # seat[i] = '1'
-
-        dist, dist2 = 0, 0
-
-        for j in range(i-1,-1,-1):
-            if seat[j] == '1':
-                dist = abs(i-j)
-                break
+    if int(seat[i]) == 1:
         for j in range(i+1,n):
-            if seat[j] == '1':
-                dist2 = abs(i-j)
+            if int(seat[j]) == 1:
+
+                if j - i > max_dist:
+                    max_dist = abs(j-i)
+
+                    maxX,maxY = i,j
                 break
 
-#        print(dist, dist2)
-        res.append(min(dist, dist2))
-    
-        #seat[i] = 0
-print(max(res))
+seat[(maxX+maxY) // 2] = '1'
+gap = sys.maxsize
+
+for i in range(n):
+    if int(seat[i]) == 1:
+        for j in range(i+1,n):
+            if int(seat[j]) == 1:
+                gap = min(gap, abs(j-i))
+print(gap)
