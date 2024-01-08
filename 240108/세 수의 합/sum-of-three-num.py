@@ -1,14 +1,14 @@
-from itertools import combinations
-
-def three_sum_count(arr, k):
-    ans = 0
-    for comb in combinations(arr, 3):
-        if sum(comb) == k:
-            ans += 1
-    return ans
+from collections import defaultdict
 
 n, k = map(int, input().split())
 arr = list(map(int, input().split()))
+res = 0
 
-result = three_sum_count(arr, k)
-print(result)
+for i in range(n-2):
+    tmp_sum = k - arr[i]
+
+    m = defaultdict(int)
+    for j in range(i+1, n):
+        res += m[tmp_sum - arr[j]]
+        m[arr[j]] += 1
+print(res)
