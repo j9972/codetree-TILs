@@ -1,3 +1,4 @@
+import sys
 inp = list(input())
 
 dic = {}
@@ -8,9 +9,9 @@ for i in inp:
     else:
         dic[i] = 1
 
-ans = 'None'
+
 for k,v in dic.items():
     if v == 1:
-        ans = k
-        break
-print(ans)
+        print(k)
+        sys.exit()
+print("None")
