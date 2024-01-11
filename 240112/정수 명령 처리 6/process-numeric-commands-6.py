@@ -8,7 +8,7 @@ for _ in range(n):
     heapq.heapify(heap)
 
     if data[0] == 'push':
-        heap.append(int(data[1]))
+        heapq.heappush(heap, int(data[1]))
 
     elif data[0] == 'size':
         print(len(heap))
@@ -20,7 +20,7 @@ for _ in range(n):
             print(0)
 
     elif data[0] == 'pop':
-        print(heap.pop(-1))
+        print(heapq.heappop(heap))
 
     elif data[0] == 'top':
         print(heap[-1])
