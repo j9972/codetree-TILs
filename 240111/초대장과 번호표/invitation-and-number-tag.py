@@ -1,21 +1,25 @@
 n,g = map(int,input().split())
 
+arr =[
+    list(map(int,input().split()))
+    for _ in range(g)
+]
+
+arr.sort(key=lambda x:x[0])
+
 s = set({1})
 
-for _ in range(g):
-    arr = list(map(int,input().split()))
+for i in range(g):
+    new_arr = arr[i]
 
     tmp = set()
-    cnt = 0
-    for i in range(1,arr[0]+1):
-        if arr[i] in s:
-            cnt += 1
-        else:
-            tmp.add(arr[i])
+    
+    for j in range(1,new_arr[0]+1):
+        if new_arr[j] not in s:
+            tmp.add(new_arr[j])
 
-    #print("tmp : ", tmp)
-    if cnt == arr[0]-1:
-        for i in tmp:
-            s.add(i)
+    if len(tmp) == 1:
+        for j in tmp:
+            s.add(j)
 
 print(len(s))
