@@ -1,25 +1,35 @@
+from collections import deque
+
 n,g = map(int,input().split())
 
-arr =[
-    list(map(int,input().split()))
-    for _ in range(g)
-]
+group = [set() for _ in range(g)]
+ppl = [[] for _ in range(n)]
+invited = [False] * n
 
-arr.sort(key=lambda x:x[0])
-
-s = set({1})
+q = deque()
+ans = 0
 
 for i in range(g):
-    new_arr = arr[i]
+    nums = list(map(int,input().split()))[1:]
 
-    tmp = set()
-    
-    for j in range(1,new_arr[0]+1):
-        if new_arr[j] not in s:
-            tmp.add(new_arr[j])
+    for num in nums:
+        num -= 1
+        group[i].add(num)
+        ppl[num].append(i)
 
-    if len(tmp) == 1:
-        for j in tmp:
-            s.add(j)
+q.append(0)
+invited[0] = True
 
-print(len(s))
+while q:
+    x = q.popleft()
+    ans += 1
+
+    for g_num in ppl[x]:
+        group[g_num].remove(x)
+
+        if len(group[g_num]) == 1:
+            p_num = list(group[g_num])[0]
+            if not invited[p_num]:
+                invited[p_num] = True
+                q.append(p_num)
+print(ans)
