@@ -12,7 +12,7 @@ b = [
     for _ in range(n)
 ]
 
-numList = list(range(0,8))
+numList = list(range(0,m))
 
 ans = 0
 for num in cb(numList,3):
