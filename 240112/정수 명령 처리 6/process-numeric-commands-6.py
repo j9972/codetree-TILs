@@ -20,7 +20,8 @@ for _ in range(n):
             print(0)
 
     elif data[0] == 'pop':
-        print(heapq.heappop(heap))
+        
+        print(heap.pop(-1))
 
     elif data[0] == 'top':
         print(heap[-1])
