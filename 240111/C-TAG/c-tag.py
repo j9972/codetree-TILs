@@ -1,5 +1,3 @@
-from itertools import combinations as cb
-
 n,m = map(int,input().split())
 
 a = [
@@ -12,27 +10,23 @@ b = [
     for _ in range(n)
 ]
 
-numList = list(range(0,m))
+s = set()
 
-ans = 0
-for num in cb(numList,3):
-    aset = set()
-    bset = set()
+def test(x,y,z):
+    s.clear()
 
     for i in range(n):
-        string1 = ""
-        string2 = ""
+        s.add(a[i][x:x+1] + a[i][y:y+1] + a[i][z:z+1])
 
-        for k in num:
-            string1 += a[i][k]
-            string2 += b[i][k]
-        
-        aset.add(string1)
-        bset.add(string2)
-    
-    alen = len(aset)
-    blen = len(bset)    
+    for i in range(n):
+        if b[i][x:x+1] + b[i][y:y+1] + b[i][z:z+1] in s:
+            return False
+    return True
 
-    if len(aset | bset) == alen + blen:
-        ans += 1
+ans = 0
+for i in range(m):
+    for j in range(i+1,m):
+        for k in range(j+1,m):
+            if test(i,j,k):
+                ans += 1
 print(ans)
