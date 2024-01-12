@@ -9,8 +9,8 @@ for i in arr:
     heapq.heappush(heap, -i)
 
 while len(heap) != 1:
-    val1 = -heapq.heappop(heap)
-    val2 = -heapq.heappop(heap)
+    val1 = heapq.heappop(heap)
+    val2 = heapq.heappop(heap)
 
     if abs(val1-val2) == 0:
         continue
