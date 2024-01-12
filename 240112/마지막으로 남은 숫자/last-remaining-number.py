@@ -21,6 +21,6 @@ while True:
         heapq.heappush(heap, -abs(val1-val2))
 
 if not heap:
-    print(0)
+    print(-1)
 else:
     print(-heapq.heappop(heap))
