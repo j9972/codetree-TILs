@@ -12,13 +12,9 @@ for x,y in arr:
                          
 for i in range(m):
 
-    min_val = heapq.heappop(pq)
-    x,y = min_val[1], min_val[2]
-#    print(x,y)
+    _,x,y = heapq.heappop(pq)
 
     heapq.heappush(pq,(abs(x+2) + abs(y+2), x+2, y+2))
-
-    #print(pq)
 
 ans = heapq.heappop(pq)
 
