@@ -9,7 +9,7 @@ for elem in arr:
 
 for i in range(m):
     data = heapq.heappop(pq)
-    data = abs(data) - 1
+    data = -1 * data - 1
     heapq.heappush(pq,-data)
 
 print(-heapq.heappop(pq))
