@@ -10,10 +10,5 @@ for k in range(1,n-1):
     heapq.heapify(tmp)
     heapq.heappop(tmp)
     
-    length = len(tmp)
-    sum_val = 0
-    while len(tmp) != 0:
-        sum_val += heapq.heappop(tmp)
-    
-    ans = max(ans, sum_val / length)
+    ans = max(ans, sum(tmp) / len(tmp))
 print("{:.2f}".format(ans))
