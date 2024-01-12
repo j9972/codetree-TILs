@@ -6,29 +6,28 @@ for _ in range(int(input())):
     m = int(input())
     arr = list(map(int, input().split()))
     
-    max_pq, min_pq = [], []
+    max_heap, min_heap = [], []
     mid = arr[0]
-
-    print(mid, end=" ")
+    print(mid,end=' ')
 
     for i in range(1,m):
+        # 짝수
         if i % 2 == 1:
-            if arr[i] < mid:
-                heapq.heappush(max_pq, -arr[i])
+            if mid > arr[i]:
+                heapq.heappush(max_heap, -arr[i])
             else:
-                heapq.heappush(min_pq, arr[i])
+                heapq.heappush(min_heap, arr[i])    
         else:
-            if len(max_pq) > len(min_pq):
-                new = -heapq.heappop(max_pq)
+            if len(max_heap) > len(min_heap):
+                new = -heapq.heappop(max_heap)
             else:
-                new = heapq.heappop(min_pq)
+                new = heapq.heappop(min_heap)
+            
+            num = sorted([new, arr[i], mid])
 
-        
-            nums = sorted([arr[i], mid, new])
+            heapq.heappush(max_heap, -num[0])
+            mid = num[1]
+            heapq.heappush(min_heap, num[2])
 
-            heapq.heappush(max_pq, -nums[0])
-            mid = nums[1]
-            heapq.heappush(min_pq, nums[2])
-
-            print(mid, end=" ")
+            print(mid,end=' ')
     print()
