@@ -15,10 +15,10 @@ while True:
     val1 = -heapq.heappop(heap)
     val2 = -heapq.heappop(heap)
 
-    if abs(val1-val2) == 0:
+    if (val1-val2) == 0:
         continue
     else:
-        heapq.heappush(heap, -abs(val1-val2))
+        heapq.heappush(heap, -(val1-val2))
 
 if not heap:
     print(-1)
