@@ -1,36 +1,34 @@
 import heapq
 
-T = int(input())
+arr = []
 
-for _ in range(T):
-
-    left_max_pq = []
-    right_min_pq = []
-
-    list_print = []
-    length = int(input())
-    list_vals = list(map(int, input().split()))
-
-    mid = list_vals[0]
-    list_print.append(list_vals[0])
-
-    for i in range((len(list_vals)-1)//2):
-        vals = [list_vals[2*i+1], list_vals[2*i+2]]
-        cnt = 0
-        for val in vals:
-            if val < mid:
-                cnt+=1
-                heapq.heappush(left_max_pq, -val)
-            else:
-                heapq.heappush(right_min_pq, val)
-
-        if cnt==0:
-            heapq.heappush(left_max_pq, -mid)
-            mid = heapq.heappop(right_min_pq)
-        elif cnt ==2:
-            heapq.heappush(right_min_pq, mid)
-            mid = -heapq.heappop(left_max_pq)
-        
-        list_print.append(mid)
+for _ in range(int(input())):
+    m = int(input())
+    arr = list(map(int, input().split()))
     
-    print(*list_print)
+    max_pq, min_pq = [], []
+    mid = arr[0]
+
+    print(mid, end=" ")
+
+    for i in range(1,m):
+        if i % 2 == 1:
+            if arr[i] < mid:
+                heapq.heappush(max_pq, -arr[i])
+            else:
+                heapq.heappush(min_pq, arr[i])
+        else:
+            if len(max_pq) > len(min_pq):
+                new = -heapq.heappop(max_pq)
+            else:
+                new = heapq.heappop(min_pq)
+
+        
+            nums = sorted([arr[i], mid, new])
+
+            heapq.heappush(max_pq, -nums[0])
+            mid = nums[1]
+            heapq.heappush(min_pq, nums[2])
+
+            print(mid, end=" ")
+    print()
