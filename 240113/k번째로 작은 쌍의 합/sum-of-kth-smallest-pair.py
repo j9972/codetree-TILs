@@ -10,16 +10,16 @@ heap = [] # 2개의 원소와 그 합을 넣기
 a.sort()
 b.sort()
 
-heapq.heappush(heap, (a[0]+b[0], b[0] ,a[0]))
+for i in range(n):
+    heapq.heappush(heap, (a[i] + b[0], i, 0))
 
-for i in range(1,n):
-    heapq.heappush(heap, (a[i]+b[0], b[0] ,a[i]))
+for i in range(k-1):
+    _, idx1, idx2 = heapq.heappop(heap)
 
-for i in range(1,m):
-    heapq.heappush(heap, (a[0]+b[i], a[0], b[i]))
+    #print(idx1, idx2)
 
-#print(heap)
-ans = 0
-for i in range(k):
-    ans = heapq.heappop(heap)
-print(ans[0])
+    idx2 += 1 
+    if idx2 <= m:
+        heapq.heappush(heap, (a[idx1] + b[idx2], idx1, idx2))
+
+print(heapq.heappop(heap)[0])
