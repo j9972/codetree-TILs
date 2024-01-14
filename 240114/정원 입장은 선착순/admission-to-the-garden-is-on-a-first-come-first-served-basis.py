@@ -8,7 +8,7 @@ for i in range(1,n+1):
     a,t = tuple(map(int,input().split()))
     arr.append((a, i, t))
 
-arr.append((sys.maxsize, n+1, 0))
+#arr.append((sys.maxsize, n+1, 0))
 
 arr.sort()
 
