@@ -11,11 +11,12 @@ for i in range(n):
     date, day, weather = input().split()
     info.append(User(date, day, weather))
 
-
-idx = 0
+tmp = []
 for i in range(n):
-    if info[i].weather == 'Rain':
-        idx = i
-        break
+    tmp.append((info[i].date,info[i].day,info[i].weather))
+tmp.sort()
 
-print(info[idx].date,info[idx].day,info[idx].weather)
+for i in range(n):
+    if tmp[i][2] == 'Rain':
+        print(tmp[i][0],tmp[i][1],tmp[i][2])
+        break
