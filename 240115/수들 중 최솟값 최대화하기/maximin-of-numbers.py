@@ -1,4 +1,5 @@
 import sys
+INT_MAX = sys.maxsize
 
 n = int(input())
 arr = [
@@ -6,17 +7,20 @@ arr = [
     for _ in range(n)
 ]
 
-visited = [False] * (n+1)
+visited = [False] * n
 ans = []
-res = []
+max_val = 0
 
 def choose(row):
+    global max_val
 
     if row == n:
-        tmp = []
+        min_num = INT_MAX
         for i in range(n):
-            tmp.append(arr[i][ans[i]])
-        res.append(min(tmp))
+            min_num = min(min_num, arr[i][ans[i]])
+
+        max_val = max(max_val, min_num)
+        return
     
     for i in range(n):
         if not visited[i]:
@@ -28,4 +32,4 @@ def choose(row):
             ans.pop()
             visited[i] = False
 choose(0)
-print(max(res))
+print(max_val)
