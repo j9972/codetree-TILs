@@ -1,20 +1,21 @@
 n = int(input())
 visited = [False] * (n+1)
 ans = []
-res = list()
+# res = list()
 
-def Print():
-    string = ''
-    for e in ans:
-        string += str(e)
-    res.append(string)
+# def Print():
+#     string = ''
+#     for e in ans:
+#         string += str(e)
+#     res.append(string)
 
 def choose(cur):
     if cur == n+1:
-        Print()
-        return
+        for e in ans:
+            print(e, end=' ')
+        print()
     
-    for i in range(1,n+1):
+    for i in range(n, 0, -1):
         if visited[i]:
             continue
         
@@ -27,7 +28,7 @@ def choose(cur):
         visited[i] = False
 choose(1)
 
-for i in res[::-1]:
-    for j in i:
-        print(j , end=' ') 
-    print()
+# for i in res[::-1]:
+#     for j in i:
+#         print(j , end=' ') 
+#     print()
