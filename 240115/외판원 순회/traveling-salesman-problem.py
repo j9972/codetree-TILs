@@ -1,4 +1,5 @@
 import sys
+
 n = int(input())
 arr = [
     list(map(int,input().split()))
@@ -7,34 +8,40 @@ arr = [
 
 ans = []
 min_val = sys.maxsize
+visited = [False] * n
 
-def choose(addup, cnt = 0):
+def choose(cnt):
     global min_val
 
     if cnt == n:
-        if arr[ans[-1]][ans[0]] == 0:
+        total = 0
+        for i in range(n-1):
+            sum_val = arr[ans[i]][ans[i+1]]
+        
+            if sum_val == 0:
+                return
+            total += sum_val
+
+        
+        addition = arr[ans[-1]][0] # 1번으로 돌아감
+        if addition == 0:
             return
-        min_val = min(min_val, addup + arr[ans[-1]][ans[0]])
+
+        min_val = min(min_val, total + addition)
         return
-    
+
     for i in range(n):
-        if i in ans:
-            continue
+        if not visited[i]:
+            visited[i] = True
+            ans.append(i)
 
-        if len(ans) > 0  and arr[ans[-1]][i] == 0:
-            continue
+            choose(cnt+ 1)
 
-        ans.append(i) # y값
+            visited[i] = False
+            ans.pop()
 
-        if len(ans) > 1:
-            addup += arr[ans[-2]][ans[-1]]
 
-        choose(addup, cnt+1)
-
-        if len(ans) > 1:
-            addup -= arr[ans[-2]][ans[-1]]
-
-        ans.pop()
-
-choose(0)
+visited[0] = True
+ans.append(0)
+choose(1)
 print(min_val)
