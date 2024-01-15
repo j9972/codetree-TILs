@@ -23,11 +23,10 @@ def choose(row):
         if not visited[i]:
             visited[i] = True
             ans.append(i)
-            
-            choose(row + 1)
+
+            choose(row+1)
 
             ans.pop()
             visited[i] = False
-
-choose(0)       
+choose(0)
 print(max_val)
