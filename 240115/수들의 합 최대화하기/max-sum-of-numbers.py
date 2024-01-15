@@ -5,20 +5,29 @@ arr = [
 ]
 
 visited = [False] * (n+1)
-max_val = -1
+ans = []
+max_val = 0
 
-def choose(cnt, sum_val):
+def choose(row):
     global max_val
 
-    if cnt == n:
+    if row == n:
+        sum_val = 0
+        for i in range(n):
+            sum_val += arr[i][ans[i]]
+        
         max_val = max(max_val, sum_val)
         return
     
     for i in range(n):
         if not visited[i]:
             visited[i] = True
-            choose(cnt+1, sum_val + arr[cnt][i])
+            ans.append(i)
+            
+            choose(row + 1)
+
+            ans.pop()
             visited[i] = False
 
-choose(0,0)       
+choose(0)       
 print(max_val)
