@@ -5,6 +5,6 @@ for i in range(n):
     info.append((x,y,i+1))
 
 
-info.sort(key = lambda x : (abs(x[0] - 0) + abs(x[1] - 0), x[2] ))
+info.sort(key = lambda x : (abs(x[0]) + abs(x[1]), x[2] ))
 for i in info:
     print(i[2])
