@@ -13,7 +13,7 @@ def make_binary(val):
 def Print():
     tmp_val = ans[0]
     if len(ans) == 1:
-        return tmp_val ^ tmp_val
+        return ans[0]
     else:
         for i in range(1,m):
             tmp_val = tmp_val ^ ans[i]
@@ -25,14 +25,14 @@ def choose(cur):
     global max_val
     res = 0
     if cur == m:
+        #print("Print() : ",Print())
         max_val = max(max_val, Print())
-        #Print()
         return
 
-    for i in range(1,n+1):
+    for i in range(n):
         if not visited[i]:
             visited[i] = True
-            ans.append(i)
+            ans.append(arr[i])
             
             choose(cur+1)
             
