@@ -12,10 +12,13 @@ def make_binary(val):
 
 def Print():
     tmp_val = ans[0]
-    for i in range(1,m):
-        tmp_val = tmp_val ^ ans[i]
+    if len(ans) == 1:
+        return tmp_val ^ tmp_val
+    else:
+        for i in range(1,m):
+            tmp_val = tmp_val ^ ans[i]
     
-    return tmp_val
+        return tmp_val
     
 
 def choose(cur):
