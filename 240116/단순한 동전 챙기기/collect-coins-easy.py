@@ -3,47 +3,46 @@ n = int(input())
 
 s,e = None, None
 
-num_list = []
+num_list = list()
 num_dict = {}
 
-for x in range(n):
+for i in range(n):
     input_list = list(input())
-    for y in range(n):
-        val = input_list[y]
+    for j in range(n):
+        val = input_list[j]
 
         if val == 'S':
-            s = (x,y)
+            s = (i,j)
         elif val == 'E':
-            e = (x,y)
+            e = (i,j)
         elif str.isdigit(val):
             num = int(val)
             num_list.append(num)
-            num_dict[num] = (x,y)
+            num_dict[num] = (i,j)
 
-num_list.sort()
+def dist(a, b):
+    (ax, ay), (bx, by) = a, b
+    return abs(ax - bx) + abs(ay - by)
 
 length = len(num_list)
-min_val = sys.maxsize
 
-def dist(a,b):
-    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+min_val = sys.maxsize
 
 for i in range(length):
     for j in range(i+1,length):
         for k in range(j+1,length):
-            move= 0
+            move = 0
 
             p1 = num_dict[num_list[i]]
             p2 = num_dict[num_list[j]]
             p3 = num_dict[num_list[k]]
 
-            coords = [s, p1, p2, p3, e]
+            coords = [s,p1,p2,p3,e]
 
             for idx in range(4):
                 move += dist(coords[idx], coords[idx+1])
-
+            
             min_val = min(min_val, move)
-
 if min_val == sys.maxsize:
     print(-1)
 else:
