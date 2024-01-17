@@ -27,13 +27,13 @@ for i in range(m):
             DB[j] = DB[j-1] - 1
     b_idx += t
 
-for i in range(a_idx,max(a_idx,b_idx)+1):
+for i in range(a_idx,max(a_idx,b_idx)):
     DA[i] = DA[a_idx-1]
-for i in range(b_idx,max(a_idx,b_idx)+1):
+for i in range(b_idx,max(a_idx,b_idx)):
     DB[i] = DB[b_idx-1]
 
 ans = -1
-for i in range(1,max(a_idx,b_idx)+1):
+for i in range(1,max(a_idx,b_idx)):
     if DA[i] == DB[i]:
         ans = i
         break
