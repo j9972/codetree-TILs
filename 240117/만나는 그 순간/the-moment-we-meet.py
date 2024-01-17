@@ -27,6 +27,11 @@ for i in range(m):
             DB[j] = DB[j-1] - 1
     b_idx += t
 
+for i in range(a_idx,1001):
+    DA[i] = DA[a_idx-1]
+for i in range(b_idx,1001):
+    DB[i] = DB[b_idx-1]
+
 ans = -1
 for i in range(1,1001):
     if DA[i] == DB[i]:
