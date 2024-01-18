@@ -35,7 +35,7 @@ elif idx < b_idx:
         A[i] = A[idx]
 
 ans = 0
-for i in range(1,max(idx,b_idx)+1):
+for i in range(1,max(idx,b_idx)):
     if A[i-1] != B[i-1]:
         if A[i] == B[i]:
             ans += 1
