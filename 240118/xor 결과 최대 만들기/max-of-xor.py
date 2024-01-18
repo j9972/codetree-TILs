@@ -8,7 +8,7 @@ ans = []
 
 def Print():
     val = ans[0]
-    if len(ans) == 0:
+    if len(ans) == 1:
         return val
     else:
         for i in range(1,len(ans)):
@@ -20,16 +20,17 @@ def choose(idx_num, cnt):
     global max_val
 
     if cnt == m:
+        #print(ans , Print())
         max_val = max(max_val, Print())
         return 
     
-    if idx_num == n+1:
+    if idx_num == n:
         return
         
-    ans.append(idx_num)
+    ans.append(arr[idx_num])
     choose(idx_num+1,cnt+1)
     ans.pop()
     choose(idx_num+1,cnt)
 
-choose(1,0)
+choose(0,0)
 print(max_val)
