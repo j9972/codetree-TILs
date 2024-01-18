@@ -29,10 +29,13 @@ for i in range(m):
 
 if idx > b_idx:
     for i in range(b_idx,idx+1):
-        B[i] = B[b_idx]
+        B[i] = B[b_idx-1]
 elif idx < b_idx:
     for i in range(idx,b_idx+1):
-        A[i] = A[idx]
+        A[i] = A[idx-1]
+
+# for i in range(max(idx,b_idx)):
+#     print("i : ", i, "a : ", A[i], "b : ", B[i])
 
 ans = 0
 for i in range(1,max(idx,b_idx)):
