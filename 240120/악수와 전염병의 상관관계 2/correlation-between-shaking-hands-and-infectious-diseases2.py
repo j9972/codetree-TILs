@@ -5,27 +5,28 @@ arr = [
     for _ in range(t)
 ]
 
-arr.sort(key = lambda x : x[0]) # 악수한 시간에 맞춰 정렬
+arr.sort(key = lambda x : x[0])
 
-d = [0] * (n+1)
-infect = [False] * (n+1)
-infect[p] = True
-            
+howManyShakeHands = [0] * (n+1)
+
+infected = [False] * (n+1)
+infected[p] = True
+
 for i in arr:
-    _,x,y = i
+    _, x, y = i
 
-    if infect[x]:
-        d[x] += 1
-    if infect[y]:
-        d[y] += 1
-    
-    if d[x] <= k and infect[x]:
-        infect[y] = True
-    if d[y] <= k and infect[y]:
-        infect[x] = True
+    if infected[x]:
+        howManyShakeHands[x] += 1
+    if infected[y]:
+        howManyShakeHands[y] += 1
+
+    if howManyShakeHands[x] <= k and infected[x]:
+        infected[y] = True
+    if howManyShakeHands[y] <= k and infected[y]:
+        infected[x] = True
 
 for i in range(1,n+1):
-    if infect[i] == True:
-        print(1,end='')
+    if infected[i]:
+        print(1, end='')
     else:
-        print(0,end='')
+        print(0, end='')
