@@ -5,13 +5,13 @@ arr = [
     for _ in range(n)
 ]
 
-minus, plus = 0,0
+one, two = 0,0
 
 for a,b in arr:
     if a == b:
         continue
-    if a > b:
-        plus += 1
+    if abs(a-b) == 1:
+        one += 1
     else:
-        minus += 1
-print(max(plus, minus))
+        two += 1
+print(max(one, two))
