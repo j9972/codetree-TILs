@@ -26,7 +26,7 @@ def choose(idx_num, cnt):
                     min_val = min(min_val, getDist(arr[i], arr[j]))
         return
     
-    ans.append(idx_num)
+    ans.append(arr[idx_num])
     choose(idx_num+1,cnt+1)
     ans.pop()
     choose(idx_num+1, cnt)
