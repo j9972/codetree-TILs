@@ -13,7 +13,6 @@ def choose(cur_idx):
     global max_val
 
     if cur_idx == n:
-        #print(ans)
         max_val = max(max_val, sum(ans))
         return
 
@@ -24,7 +23,7 @@ def choose(cur_idx):
         
             choose(cur_idx + 1)
             ans.pop()
-            
+
             visited[i] = False
 
 choose(0)
