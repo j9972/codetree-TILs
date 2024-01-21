@@ -22,18 +22,18 @@ def Possible():
     return True
 
 
-def choose(cnt):
+def choose(idx, cnt):
     global max_val
 
-    if cnt == n:
+    if idx == n or cnt == n:
         if Possible():
             max_val = max(max_val , len(ans))
         return 
 
-    ans.append(arr[cnt])
-    choose(cnt+1)
-    ans.pop()
-    #choose(cnt+1)
+    for i in range(cnt, n):
+        ans.append(arr[i])
+        choose(idx+1, cnt+1)
+        ans.pop()
 
-choose(0)
+choose(0,0)
 print(max_val)
