@@ -8,9 +8,10 @@ for i in n:
     else:
         oper.append(i)
 
-dic = {}
-for i in alpha:
-    dic[i] = 0
+dic = {
+    a:0
+    for a in set(alpha)
+}
 
 ans = []
 max_val = 0
