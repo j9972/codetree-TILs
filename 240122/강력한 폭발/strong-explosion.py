@@ -2,19 +2,17 @@ import sys
 
 n = int(input())
 
-arr = [
-    list(map(int,input().split()))
-    for _ in range(n)
-]
+arr = []
+for i in range(n):
+    boom_type = list(map(int,input().split()))
+    for j, val in enumerate(boom_type):
+        if val == 1:
+            arr.append((i,j))    
 
 max_val = -sys.maxsize
 ans = []
 
-boomCnt = 0
-for i in range(n):
-    for j in range(n):
-        if arr[i][j] == 1:
-            boomCnt += 1
+boomCnt = len(arr)
 
 block1 = [(-2,0),(-1,0),(1,0),(2,0)]
 block2 = [(0,-1),(-1,0),(1,0),(0,1)]
@@ -25,6 +23,8 @@ def in_range(x,y):
 
 def boom():
     tmp = [[0] * n for _ in range(n)]
+
+    #print("ans : {}".format(ans))
     
     for i in ans:
         val, x, y = i
@@ -73,13 +73,12 @@ def choose(cnt):
         max_val = max(max_val, boom())
         return
 
-    for x in range(n):
-        for y in range(n):
-            if arr[x][y] == 1:
-                for i in range(1,4):
-                    ans.append((i, x, y))
-                    choose(cnt+1)
-                    ans.pop()
+    for i in range(1,4):
+        x,y = arr[cnt]
+
+        ans.append((i, x, y))
+        choose(cnt+1)
+        ans.pop()
 
 
 choose(0)
