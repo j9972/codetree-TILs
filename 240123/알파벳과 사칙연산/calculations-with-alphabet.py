@@ -1,6 +1,6 @@
 n = input()
 
-oper , alpha = list(), list()
+oper, alpha = list(), list()
 
 for i in n:
     if i.isalpha():
@@ -8,34 +8,31 @@ for i in n:
     else:
         oper.append(i)
 
+ans = []
+max_val = -1
+
 dic = {}
 for i in alpha:
     dic[i] = 0
 
-ans = []
-max_val = -1
-
 def calc():
-    global max_val, dic
+    global dic, max_val
 
     for i, k in enumerate(dic.keys()):
         dic[k] = ans[i]
     
     cnt = dic[alpha[0]]
-
     for i, op in enumerate(oper):
-
         next_val = dic[alpha[i+1]]
 
         if op == '+':
             cnt += next_val
         elif op == '-':
             cnt -= next_val
-        else:
+        elif op == '*':
             cnt *= next_val
-    
-    max_val = max(max_val, cnt)
 
+    max_val = max(max_val, cnt)
 
 def choose(cnt):
     if cnt == len(dic):
