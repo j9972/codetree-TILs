@@ -8,23 +8,25 @@ for i in n:
     else:
         oper.append(i)
 
-dic = {
-    a:0
-    for a in set(alpha)
-}
+dic = {}
+for i in alpha:
+    dic[i] = 0
 
 ans = []
 max_val = 0
 
 def calc():
-    global dic, max_val
+    global max_val, dic
 
     for i, k in enumerate(dic.keys()):
         dic[k] = ans[i]
     
     cnt = dic[alpha[0]]
+    
     for i, op in enumerate(oper):
+
         next_val = dic[alpha[i+1]]
+
         if op == '+':
             cnt += next_val
         elif op == '-':
