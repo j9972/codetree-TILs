@@ -16,7 +16,7 @@ ans = []
 max_val = 0
 
 def calc():
-    global dic
+    global dic, max_val
 
     for i, k in enumerate(dic.keys()):
         dic[k] = ans[i]
@@ -31,14 +31,12 @@ def calc():
         else:
             cnt *= next_val
     
-    return cnt
+    max_val = max(max_val, cnt)
 
 
 def choose(cnt):
-    global max_val
-
     if cnt == len(dic):
-        max_val = max(max_val, calc())
+        calc()
         return
     
     for i in range(1,5):
