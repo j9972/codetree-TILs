@@ -13,7 +13,7 @@ for i in alpha:
     dic[i] = 0
 
 ans = []
-max_val = 0
+max_val = -1
 
 def calc():
     global max_val, dic
@@ -22,7 +22,7 @@ def calc():
         dic[k] = ans[i]
     
     cnt = dic[alpha[0]]
-    
+
     for i, op in enumerate(oper):
 
         next_val = dic[alpha[i+1]]
