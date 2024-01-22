@@ -17,7 +17,7 @@ def possible():
     for _, idx in arr:
         ppl1[idx], ppl1[idx+1] = ppl1[idx+1], ppl1[idx]
     for _, idx in ans:
-        ppl1[idx], ppl1[idx+1] = ppl1[idx+1], ppl1[idx]
+        ppl2[idx], ppl2[idx+1] = ppl2[idx+1], ppl2[idx]
 
     for i in range(n):
         if ppl1[i] != ppl2[i]:
