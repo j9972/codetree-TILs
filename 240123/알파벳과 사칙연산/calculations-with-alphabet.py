@@ -1,47 +1,51 @@
-n = input()
+import sys
 
-oper, alpha = list(), list()
+string = input()
 
-for i in n:
+alpha, oper = list(), list()
+
+for i in string:
     if i.isalpha():
         alpha.append(i)
     else:
         oper.append(i)
 
-ans = []
-max_val = -1
-
 dic = {}
 for i in alpha:
     dic[i] = 0
 
+ans = list()
+max_val = -sys.maxsize
+
 def calc():
-    global dic, max_val
+    global dic
 
     for i, k in enumerate(dic.keys()):
         dic[k] = ans[i]
     
-    cnt = dic[alpha[0]]
+    val = dic[alpha[0]]
     for i, op in enumerate(oper):
         next_val = dic[alpha[i+1]]
-
         if op == '+':
-            cnt += next_val
-        elif op == '-':
-            cnt -= next_val
+            val += next_val
+        elif op == '-':   
+            val -= next_val
         elif op == '*':
-            cnt *= next_val
+            val *= next_val
 
-    max_val = max(max_val, cnt)
+    return val
+
 
 def choose(cnt):
+    global max_val
+
     if cnt == len(dic):
-        calc()
+        max_val = max(max_val, calc())
         return
     
     for i in range(1,5):
         ans.append(i)
-        choose(cnt+1)
+        choose(cnt + 1)
         ans.pop()
 
 choose(0)
