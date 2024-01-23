@@ -15,25 +15,25 @@ def getDist(a,b):
 min_val = sys.maxsize
 ans = list()
 
-def choose(idx):
+def choose(idx, cnt):
     global min_val
 
-    if idx == m:
+    if cnt == m:
+        max_val = -sys.maxsize
         for i, val in enumerate(ans):
             for j, val1 in enumerate(ans):
                 if i != j:
-                    min_val = min(min_val, getDist(val1, val))
+                    max_val = max(max_val, getDist(val1, val))
+        min_val = min(min_val, max_val)
         return 
 
-    
-    # if idx == n:
-    #     return
+    if idx == n:
+        return
     
     ans.append(arr[idx])
-    choose(idx+1)
-    #choose(idx+1, cnt+1)
+    choose(idx+1, cnt+1)
     ans.pop()
-    #choose(idx+1, cnt)
+    choose(idx+1, cnt)
 
-choose(0)
+choose(0,0)
 print(min_val)
