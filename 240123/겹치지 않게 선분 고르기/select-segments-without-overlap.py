@@ -8,15 +8,14 @@ arr = [
 ans = list()
 max_val = 0
 
-def interact(a,b):
-    x1,y1 = a
-    x2,y2 = b
-    return (x1 <= x2 <= y1) or (x1 <= x2 <= y1) or (x2 <= x1 <= x2) or (x2 <= y1 <= x2)
 
 def possible():
-    for i, val1 in enumerate(ans):
-        for j, val2 in enumerate(ans):
-            if i < j and interact(val1, val2):
+    for idx1, val1 in enumerate(ans):
+        for idx2, val2 in enumerate(ans):
+            x1,y1 = val1
+            x2,y2 = val2
+
+            if idx1 < idx2 and ((x1<=x2<=y1) or (x1<=y2<=y1) or (x2<=x1<=y2) or (x2<=y1<=y2)):
                 return False
     return True
 
