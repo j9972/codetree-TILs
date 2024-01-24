@@ -37,7 +37,7 @@ def possible(x1,y1,x2,y2):
     
     if interact(y1,y1+m-1,y2,y2+m-1):
         return False
-    return Ture
+    return True
 
 
 max_val = 0
