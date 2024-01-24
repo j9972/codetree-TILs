@@ -8,7 +8,7 @@ for i in string:
     else:
         oper.append(i)
 
-max_val = 0
+max_val = -1
 ans = []
 
 dic = {}
@@ -23,13 +23,16 @@ def calc():
     
     val = dic[alpha[0]]
     for i, op in enumerate(oper):
+
         next_val = dic[alpha[i+1]]
+
         if op == '+':
             val += next_val
         elif op == '-':
             val -= next_val
         elif op == '*':
             val *= next_val
+
     return val
 
 def choose(cnt):
