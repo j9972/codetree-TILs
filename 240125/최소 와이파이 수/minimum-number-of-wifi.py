@@ -7,9 +7,9 @@ while idx < n:
     if idx + 2 * m >= n:
         break
     
-    for i in range(idx, idx + 2 * m):
-        if arr[i] == 1:
-            wifi += 1
-            break
-    idx += 2 * m
+    if sum(arr[idx:idx+2*m]) >= 1:
+        wifi += 1
+        idx += 2 * m
+    else:
+        idx += 1
 print(wifi)
