@@ -1,3 +1,4 @@
+from collections import deque
 import copy
 
 n,m,x,y,k = map(int,input().split())
@@ -43,12 +44,18 @@ def move_cube(cube, d):
 def in_range(x,y):
     return 0<=x<n and 0<=y<m
 
+q = deque()
+q.append((x,y))
+
 for d in direction:
     d -= 1
+
+    x,y = q.popleft()
 
     nx,ny = x + dxs[d], y + dys[d]
 
     if not in_range(nx,ny):
+        q.append((x,y))
         continue
 
     cube = move_cube(cube, d)
@@ -56,9 +63,9 @@ for d in direction:
     if arr[nx][ny] == 0:
         arr[nx][ny] = cube[2][0]
     else:
-        cube[2][0] =  arr[nx][ny]
+        cube[2][0] = arr[nx][ny]
         arr[nx][ny] = 0
 
-    x,y = nx,ny
+    q.append((nx,ny))
 
     print(cube[0][0])
