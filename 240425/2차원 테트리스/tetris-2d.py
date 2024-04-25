@@ -73,13 +73,24 @@ def drop_line(num, end_row):
             arr[num][i][j] = arr[num][i-1][j]
             arr[num][i-1][j] = 0
 
-def dark(num):
-    global score 
+# def dark(num):
+#     global score 
 
-    for i in range(n-1, 1,-1):
-        if full_line(num, i):
+#     for i in range(n-1, 1,-1):
+#         if full_line(num, i):
+#             score += 1
+#             drop_line(num, i)
+
+def dark(num):
+    global score
+
+    x = n-1
+    while (x>=2):
+        if full_line(num, x):
             score += 1
-            drop_line(num, i)
+            drop_line(num, x)
+        else:
+            x -= 1
 
 def light(num):
     cnt = 0
